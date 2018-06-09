@@ -903,6 +903,15 @@ impl DB {
         DBIterator::new_cf(self, cf_handle, &opts, mode)
     }
 
+    pub fn iterator_cf_opt(
+        &self,
+        cf_handle: ColumnFamily,
+        mode: IteratorMode,
+        readopts: &ReadOptions,
+    ) -> Result<DBIterator, Error> {
+        DBIterator::new_cf(self, cf_handle, readopts, mode)
+    }
+
     pub fn prefix_iterator_cf<'a>(
         &self,
         cf_handle: ColumnFamily,
